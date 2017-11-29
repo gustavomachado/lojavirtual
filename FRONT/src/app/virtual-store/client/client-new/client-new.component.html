@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="row">
+      <div class="col-sm-12 title">
+        <h2>Cadastrar novo Cliente</h2>
+      </div>
+      <div class="col-sm-12" *ngIf="message" [ngClass]="tipoMsg">
+        <p>{{message}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <form [formGroup]="form">
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <md-form-field>
+                  <input id="id" mdInput placeholder="Id (obrigatório)" formControlName="{{formNames.id}}" (focusout)="validateField(formNames.id)">
+                  <md-error>{{formErrors[formNames.codigo]}}</md-error>
+                </md-form-field>
+              </div>
+            <div class="col">
+              <md-form-field>
+                <input id="cpf" mdInput placeholder="CPF (obrigatório)" formControlName="cpf" (focusout)="validateField(formNames.cpf)" >
+                <md-error>{{formErrors[formNames.cpf]}}</md-error>
+              </md-form-field>
+            </div>
+             
+            </div>
+          </div>
+          <div class="form-group">
+            <md-form-field>
+              <input id="nome" mdInput placeholder="Nome (obrigatório)" formControlName="{{formNames.nome}}" (focusout)="validateField(formNames.nome)">
+              <md-error>{{formErrors[formNames.nome]}}</md-error>
+            </md-form-field>
+          </div>
+        </form>
+        <div class="row">
+          <div class="col-sm-12 btn-actions">
+            <div class="col-sm-6 btn-cancel">
+              <button id="btnCancelar" md-raised-button (click)="closeDialog()">Cancelar</button>
+            </div>
+            <div class="col-sm-6 btn-save">
+              <button id="btnSalvar" md-raised-button color="primary" [disabled]="form.invalid" (click)="create()">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
